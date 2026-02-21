@@ -1,26 +1,33 @@
 "use client";
 import CategoryCard from "@/components/product-cards/CategoryCard";
 import { Button } from "@/components/ui/button";
-import type { CarouselApi } from "@/components/ui/carousel";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { useGetCategoriesQuery } from "@/services/productsApi";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CategorySection = () => {
   const { data: categories, isLoading } = useGetCategoriesQuery();
   const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
+  useEffect(() => {
+    if (!api) return;
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
   return (
-    <section className="-mx-4 mt-16 w-screen bg-secondary px-4 py-12 lg:mt-20 lg:py-16">
-      <div className="container mx-auto">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-4xl font-extrabold uppercase text-white sm:text-5xl lg:text-6xl">
-            Categories
+    <section className="mt-16 bg-secondary w-screen ">
+      <div className="container mx-auto pt-[3em]">
+        <div className="mb-8 flex items-end justify-between">
+          <h2 className="text-4xl font-bold uppercase leading-tight sm:text-5xl lg:text-6xl text-white">
+            categories
           </h2>
 
           <div className="flex gap-2">
@@ -28,7 +35,6 @@ const CategorySection = () => {
               variant="outline"
               size="icon"
               onClick={() => api?.scrollPrev()}
-              className="h-10 w-10 rounded-lg border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white lg:h-12 lg:w-12"
             >
               <ChevronLeft className="h-5 w-5 lg:h-6 lg:w-6" />
             </Button>
@@ -36,7 +42,6 @@ const CategorySection = () => {
               variant="outline"
               size="icon"
               onClick={() => api?.scrollNext()}
-              className="h-10 w-10 rounded-lg border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white lg:h-12 lg:w-12"
             >
               <ChevronRight className="h-5 w-5 lg:h-6 lg:w-6" />
             </Button>
@@ -53,22 +58,27 @@ const CategorySection = () => {
             ))}
           </div>
         ) : (
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {categories?.slice(0, 3)?.map((category) => (
-                <CarouselItem key={category.id} className="pl-4 sm:basis-1/2">
-                  <CategoryCard category={category} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+          <div className="pl-20">
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full "
+            >
+              <CarouselContent className="ml-0!">
+                {categories?.slice(0, 5)?.map((category, index) => (
+                  <CarouselItem key={category.id} className="pl-0 basis-1/2">
+                    <CategoryCard
+                      category={category}
+                      className={`rounded-none w-full ${index === current ? "rounded-tl-[4em]" : ""}`}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
         )}
       </div>
     </section>
