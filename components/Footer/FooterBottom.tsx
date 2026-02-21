@@ -5,7 +5,7 @@ import FooterLinksColumn from "./FooterLinksColumn";
 
 const FooterBottom = () => {
   return (
-    <div className="relative rounded-4xl bg-secondary px-6 pb-40 pt-10 text-white sm:px-12 sm:pb-52 sm:pt-12">
+    <div className="relative rounded-4xl bg-secondary px-6 pb-10 pt-10 text-white sm:px-12 sm:pb-52 sm:pt-12">
       <div className="mb-10 grid gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div className="max-w-sm space-y-3">
           <h5 className="text-xl font-semibold text-amber-400">About us</h5>

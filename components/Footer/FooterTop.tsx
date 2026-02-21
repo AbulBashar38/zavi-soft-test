@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const FooterTop = () => {
   return (
-    <div className="px-6 py-10 text-white sm:px-12 sm:py-12">
-      <div className="grid items-center gap-10 md:grid-cols-2">
-        <div className="space-y-5 w-full">
-          <h4 className="max-w-lg text-3xl font-bold uppercase leading-[1.12] sm:text-5xl">
+    <div className="px-6 sm:pt-10 pt-5 pb-10 text-white sm:px-12 sm:py-12">
+      <div className="grid items-center gap-5 sm:gap-10 md:grid-cols-2">
+        <div className="sm:space-y-5 space-y-3 w-full">
+          <h4 className="max-w-lg text-xl font-bold uppercase leading-[1.12] sm:text-5xl">
             Join our KicksPlus Club & get 15% off
           </h4>
-          <p className="text-base text-accent sm:text-2xl">
+          <p className="text-sm text-accent sm:text-2xl">
             Sign up for free! Join the community.
           </p>
           <form className="flex max-w-md items-center gap-2">

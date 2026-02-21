@@ -153,7 +153,7 @@ const Navbar = () => {
               width={140}
               height={38}
               priority
-              className="w-full"
+              className="sm:w-full w-24"
             />
           </div>
 
