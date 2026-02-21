@@ -15,7 +15,7 @@ const ProductCardShimmer = ({ className }: Props) => {
         <div className="relative overflow-hidden rounded-4xl border-[6px] border-border bg-muted">
           <Skeleton className="absolute left-4 top-4 h-6 w-12 rounded-sm" />
 
-          <div className="relative w-full box-border aspect-[5/3]">
+          <div className="relative w-full box-border aspect-square">
             <Skeleton className="absolute inset-0 h-full w-full rounded-4xl" />
           </div>
         </div>
