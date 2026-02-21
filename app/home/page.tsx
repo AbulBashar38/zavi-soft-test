@@ -5,7 +5,7 @@ import ReviewSection from "./features/ReviewSection";
 
 const HomePage = () => {
   return (
-    <section className="pb-10">
+    <section className="pb-10 sm:pb-16 space-y-10 sm:space-y-16">
       <Hero />
       <NewProductSection />
       <CategorySection />
