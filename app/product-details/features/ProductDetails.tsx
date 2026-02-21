@@ -1,5 +1,5 @@
 import type { Product } from "@/types/productsType";
-import ProductImages from "./ProductImages";
+import ProductImageContainer from "./ProductImageContainer";
 import ProductInfo from "./ProductInfo";
 
 type ProductDetailsProps = {
@@ -9,7 +9,7 @@ type ProductDetailsProps = {
 const ProductDetails = ({ product }: ProductDetailsProps) => {
   return (
     <section className="grid gap-6 lg:grid-cols-[1.7fr_1fr] lg:gap-8">
-      <ProductImages title={product.title} images={product.images ?? []} />
+      <ProductImageContainer title={product.title} images={product.images ?? []} />
       <ProductInfo product={product} />
     </section>
   );

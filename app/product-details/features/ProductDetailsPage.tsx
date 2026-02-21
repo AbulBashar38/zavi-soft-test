@@ -1,6 +1,10 @@
 "use client";
 
-import { useGetProductQuery } from "@/services/productsApi";
+import SuggestionProducts from "@/components/SuggestionProducts";
+import {
+  useGetProductQuery,
+  useGetProductsQuery,
+} from "@/services/productsApi";
 import DetailsPageSkeleton from "./DetailsPageSkeleton";
 import ProductDetails from "./ProductDetails";
 
@@ -20,6 +24,10 @@ const ProductDetailsPage = ({ productId }: ProductDetailsPageProps) => {
     skip: shouldSkip,
   });
 
+  const { data: products } = useGetProductsQuery(undefined, {
+    skip: shouldSkip,
+  });
+
   if (shouldSkip || isError) {
     return (
       <p className="rounded-2xl border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
@@ -32,7 +40,15 @@ const ProductDetailsPage = ({ productId }: ProductDetailsPageProps) => {
     return <DetailsPageSkeleton />;
   }
 
-  return <ProductDetails product={product} />;
+  const suggestionProducts =
+    products?.filter((item) => item.id !== product.id).slice(0, 8) ?? [];
+
+  return (
+    <section className="space-y-12 sm:space-y-16">
+      <ProductDetails product={product} />
+      <SuggestionProducts products={suggestionProducts} />
+    </section>
+  );
 };
 
 export default ProductDetailsPage;

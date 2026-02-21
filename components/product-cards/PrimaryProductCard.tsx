@@ -19,7 +19,10 @@ const PrimaryProductCard = ({
 
   return (
     <Card
-      className={cn("gap-3 bg-transparent py-0 shadow-none ring-0", className)}
+      className={cn(
+        "h-full gap-3 bg-transparent py-0 shadow-none ring-0",
+        className,
+      )}
     >
       <CardContent className="px-0">
         <div className="relative overflow-hidden rounded-4xl border-[6px] border-white bg-muted">
@@ -39,15 +42,15 @@ const PrimaryProductCard = ({
         </div>
       </CardContent>
 
-      <CardFooter className="flex-col items-start gap-4 px-0 pt-0">
-        <h3 className="line-clamp-2 text-base sm:text-2xl  font-semibold uppercase">
+      <CardFooter className="flex-1 flex-col items-start gap-4 px-0 pt-0">
+        <h3 className="line-clamp-2 text-base sm:text-2xl font-semibold uppercase">
           {product.title}
         </h3>
 
         <Button
           onClick={() => router.push(`/product-details/${product.id}`)}
           variant={"secondary"}
-          className="w-full"
+          className="mt-auto w-full"
         >
           VIEW PRODUCT -{" "}
           <span className="text-deep-yellow">${product.price}</span>
