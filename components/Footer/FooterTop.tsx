@@ -13,19 +13,14 @@ const FooterTop = () => {
           <p className="text-sm text-accent sm:text-2xl">
             Sign up for free! Join the community.
           </p>
-          <form className="flex max-w-md items-center gap-2">
+          <div className="flex max-w-md items-center gap-2">
             <Input
               type="email"
               placeholder="Email address"
               className="h-11 border-white/50 bg-primary text-white placeholder:text-accent"
             />
-            <Button
-              type="submit"
-              className="h-11 rounded-md bg-foreground px-6 text-xs tracking-wide text-white hover:bg-foreground/90"
-            >
-              SUBMIT
-            </Button>
-          </form>
+            <Button variant={"secondary"}>SUBMIT</Button>
+          </div>
         </div>
 
         <div className="flex justify-start md:justify-center">

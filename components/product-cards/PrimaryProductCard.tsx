@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types/productsType";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type PrimaryProductCardProps = {
   product: Product;
@@ -13,6 +14,7 @@ const PrimaryProductCard = ({
   product,
   className,
 }: PrimaryProductCardProps) => {
+  const router = useRouter();
   const productImage = product.images?.[0] ?? "/images/hero-feature1.jpg";
 
   return (
@@ -42,7 +44,11 @@ const PrimaryProductCard = ({
           {product.title}
         </h3>
 
-        <Button variant={"secondary"}>
+        <Button
+          onClick={() => router.push(`/product-details/${product.id}`)}
+          variant={"secondary"}
+          className="w-full"
+        >
           VIEW PRODUCT -{" "}
           <span className="text-deep-yellow">${product.price}</span>
         </Button>

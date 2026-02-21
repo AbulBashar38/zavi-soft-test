@@ -7,12 +7,19 @@ export const productsApi = apiConfig.injectEndpoints({
     getProducts: build.query<Product[], void>({
       query: () => ENDPOINTS.PRODUCTS,
     }),
+    getProduct: build.query<Product, number>({
+      query: (id) => `${ENDPOINTS.PRODUCTS}/${id}`,
+    }),
     getCategories: build.query<ProductCategory[], void>({
       query: () => ENDPOINTS.CATEGORIES,
     }),
   }),
 });
 
-export const { useGetProductsQuery, useGetCategoriesQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetProductQuery,
+  useGetCategoriesQuery,
+} = productsApi;
 
 export default productsApi;

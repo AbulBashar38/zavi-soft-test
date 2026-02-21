@@ -36,3 +36,4 @@ export const mockReviews: Review[] = [
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
   },
 ];
+export const sizeOptions = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
