@@ -39,20 +39,20 @@ const mockReviews: Review[] = [
 const ReviewSection = () => {
   return (
     <section className="mt-16 lg:mt-20">
-      <div className="mb-8 flex items-center justify-between">
-        <h2 className="text-4xl font-extrabold uppercase sm:text-5xl lg:text-6xl">
-          Reviews
-        </h2>
+      <div className="container mx-auto">
+        <div className="mb-8 flex items-center justify-between">
+          <h2 className="text-4xl font-bold uppercase leading-tight sm:text-5xl lg:text-6xl">
+            Reviews
+          </h2>
 
-        <Button className="h-11 rounded-lg bg-primary px-6 text-sm font-semibold tracking-wide text-primary-foreground hover:bg-primary/90 lg:px-8">
-          SEE ALL
-        </Button>
-      </div>
+          <Button>SEE ALL</Button>
+        </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {mockReviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
-        ))}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {mockReviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
       </div>
     </section>
   );

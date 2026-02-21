@@ -1,6 +1,7 @@
 import CategorySection from "./features/CategorySection";
 import Hero from "./features/Hero";
 import NewProductSection from "./features/NewProductSection";
+import ReviewSection from "./features/ReviewSection";
 
 const HomePage = () => {
   return (
@@ -8,7 +9,7 @@ const HomePage = () => {
       <Hero />
       <NewProductSection />
       <CategorySection />
-      {/* <ReviewSection /> */}
+      <ReviewSection />
     </section>
   );
 };

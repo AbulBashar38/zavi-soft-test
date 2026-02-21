@@ -13,11 +13,11 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
   return (
     <Card
       className={cn(
-        "overflow-hidden bg-card p-0 shadow-sm ring-1 ring-border",
+        "overflow-hidden  p-0 shadow-sm ring-1 ring-border bg-white",
         className,
       )}
     >
-      <div className="relative bg-background p-5">
+      <div className="relative  p-5">
         <div className="absolute right-4 top-4">
           <div className="relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-border">
             <Image
@@ -45,7 +45,7 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
                   className={cn(
                     "h-4 w-4",
                     i < Math.floor(review.rating)
-                      ? "fill-primary text-primary"
+                      ? "fill-deep-yellow text-deep-yellow"
                       : "fill-muted text-muted",
                   )}
                 />
@@ -58,7 +58,7 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
         </div>
       </div>
 
-      <div className="relative h-64 w-full lg:h-72">
+      <div className="relative w-full h-full aspect-4/3">
         <Image
           src={review.productImage}
           alt={`Product reviewed: ${review.title}`}
