@@ -58,7 +58,7 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
         </div>
       </div>
 
-      <div className="relative w-full h-full aspect-4/3">
+      <div className="relative w-full h-full aspect-4/2 sm:aspect-4/3">
         <Image
           src={review.productImage}
           alt={`Product reviewed: ${review.title}`}
