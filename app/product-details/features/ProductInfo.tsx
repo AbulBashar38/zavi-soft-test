@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import { addToCart } from "@/state-management/features/cartSlice";
 import type { Product } from "@/types/productsType";
 import { Heart } from "lucide-react";
 import { useState } from "react";
@@ -20,6 +22,7 @@ const colorOptions = [
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const [selectedColor, setSelectedColor] = useState(colorOptions[0].name);
   const [selectedSize, setSelectedSize] = useState(38);
+  const dispatch = useAppDispatch();
 
   return (
     <aside className="space-y-6 rounded-3xl bg-transparent p-0 xl:sticky xl:top-24">
@@ -46,7 +49,20 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         setSelectedSize={setSelectedSize}
       />
       <div className="flex items-center gap-2 w-full">
-        <Button variant="secondary" className="flex-1">
+        <Button
+          variant="secondary"
+          className="flex-1"
+          onClick={() =>
+            dispatch(
+              addToCart({
+                product,
+                quantity: 1,
+                color: selectedColor,
+                size: selectedSize,
+              }),
+            )
+          }
+        >
           ADD TO CART
         </Button>
         <Button variant="secondary" size="icon" className="h-12! w-12!">

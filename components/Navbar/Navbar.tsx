@@ -15,7 +15,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useAppSelector } from "@/hooks/reduxHooks";
 import { menuItems } from "@/lib/constant";
+import { selectCartTotalQuantity } from "@/state-management/features/cartSlice";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +30,7 @@ const Navbar = () => {
   const toggleSection = (section: "men" | "women") => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
+  const cartTotal = useAppSelector(selectCartTotalQuantity);
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-8">
       <nav className=" mx-auto container ">
@@ -171,9 +174,13 @@ const Navbar = () => {
               <Image src="/icons/User.svg" alt="" width={20} height={20} />
             </Button>
 
-            <div className="flex h-7 min-w-7 items-center justify-center rounded-full bg-amber-400 px-2 text-xs font-semibold text-foreground">
-              0
-            </div>
+            <Link
+              href="/cart-page"
+              aria-label="Open cart"
+              className="flex h-7 min-w-7 items-center justify-center rounded-full bg-amber-400 px-2 text-xs font-semibold text-foreground"
+            >
+              {cartTotal}
+            </Link>
           </div>
         </div>
       </nav>

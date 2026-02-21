@@ -1,11 +1,13 @@
 import { apiConfig } from "@/services/apiConfig";
 import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./features/cartSlice";
 import counterReducer from "./features/counterSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       counter: counterReducer,
+      cart: cartReducer,
       [apiConfig.reducerPath]: apiConfig.reducer,
     },
     middleware: (getDefaultMiddleware) =>
