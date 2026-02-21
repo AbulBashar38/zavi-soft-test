@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterLinkItem } from "./footer-data";
 
 type FooterLinksColumnProps = {
   title: string;

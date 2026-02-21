@@ -8,6 +8,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { chunkArray } from "@/lib/utils";
 import { useGetCategoriesQuery } from "@/services/productsApi";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -17,6 +18,8 @@ const CategorySection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
+  const groupedCategories = chunkArray(categories?.slice(0, 4) || [], 2);
+
   useEffect(() => {
     if (!api) return;
     api.on("select", () => {
@@ -24,10 +27,10 @@ const CategorySection = () => {
     });
   }, [api]);
   return (
-    <section className="mt-16 bg-secondary w-screen ">
-      <div className="container mx-auto pt-[3em]">
+    <section className=" bg-secondary w-screen pl-4 sm:px-8">
+      <div className="container mx-auto pt-10 sm:pt-[3em]">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="text-4xl font-bold uppercase leading-tight sm:text-5xl lg:text-6xl text-white">
+          <h2 className="text-2xl font-semibold uppercase leading-tight sm:text-5xl lg:text-6xl text-white">
             categories
           </h2>
 
@@ -56,22 +59,34 @@ const CategorySection = () => {
             ))}
           </div>
         ) : (
-          <div className="pl-20">
+          <div className="sm:pl-20">
             <Carousel
               setApi={setApi}
               opts={{
                 align: "start",
                 loop: true,
               }}
-              className="w-full "
+              className="w-full"
             >
               <CarouselContent className="ml-0!">
-                {categories?.slice(0, 5)?.map((category, index) => (
-                  <CarouselItem key={category.id} className="pl-0 basis-1/2">
-                    <CategoryCard
-                      category={category}
-                      className={`rounded-none w-full ${index === current ? "rounded-tl-[4em]" : ""}`}
-                    />
+                {groupedCategories.map((group, slideIndex) => (
+                  <CarouselItem
+                    key={slideIndex}
+                    className="pl-0 basis-full flex"
+                  >
+                    <div className="flex flex-col sm:flex-row w-full h-full">
+                      {group.map((category, index) => (
+                        <CategoryCard
+                          key={category.id}
+                          category={category}
+                          className={`w-full rounded-none ${
+                            slideIndex === current && index === 0
+                              ? "rounded-tl-[2em] sm:rounded-tl-[4em]"
+                              : ""
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
