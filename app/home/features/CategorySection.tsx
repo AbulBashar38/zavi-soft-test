@@ -1,5 +1,6 @@
 "use client";
 import CategoryCard from "@/components/product-cards/CategoryCard";
+import CategoryCardShimmer from "@/components/product-cards/CategoryCardShimmer";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -51,10 +52,7 @@ const CategorySection = () => {
         {isLoading ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {[...Array(2)].map((_, i) => (
-              <div
-                key={i}
-                className="h-80 animate-pulse rounded-3xl bg-muted/20 lg:h-96"
-              />
+              <CategoryCardShimmer key={i} className="rounded-3xl" />
             ))}
           </div>
         ) : (
