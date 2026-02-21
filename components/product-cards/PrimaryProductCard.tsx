@@ -38,11 +38,11 @@ const PrimaryProductCard = ({
       </CardContent>
 
       <CardFooter className="flex-col items-start gap-4 px-0 pt-0">
-        <h3 className="line-clamp-2 text-2xl  font-semibold uppercase">
+        <h3 className="line-clamp-2 text-base sm:text-2xl  font-semibold uppercase">
           {product.title}
         </h3>
 
-        <Button className="h-11 w-full rounded-lg bg-foreground text-sm font-semibold tracking-wide text-background hover:bg-foreground/90">
+        <Button variant={"secondary"}>
           VIEW PRODUCT -{" "}
           <span className="text-deep-yellow">${product.price}</span>
         </Button>
