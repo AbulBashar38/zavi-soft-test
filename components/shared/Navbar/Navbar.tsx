@@ -15,7 +15,7 @@ const menuItems = {
 
 const Navbar = () => {
   return (
-    <section className="w-full px-4 pt-8 sm:px-6 lg:px-8">
+    <section className="w-full px-4 py-8 sm:px-6 lg:px-8">
       <nav className="mx-auto flex w-full container items-center justify-between rounded-2xl bg-card px-6 py-5 sm:px-8">
         <div className="flex flex-1 items-center">
           <NavigationMenu viewport={false}>

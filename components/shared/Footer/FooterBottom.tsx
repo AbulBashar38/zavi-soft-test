@@ -6,7 +6,7 @@ import FooterLinksColumn from "./FooterLinksColumn";
 const FooterBottom = () => {
   return (
     <div className="relative rounded-4xl bg-secondary px-6 pb-40 pt-10 text-white sm:px-12 sm:pb-52 sm:pt-12">
-      <div className="mb-24 grid gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="mb-10 grid gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div className="max-w-sm space-y-3">
           <h5 className="text-xl font-semibold text-amber-400">About us</h5>
           <p className="text-accent leading-relaxed">
@@ -43,7 +43,7 @@ const FooterBottom = () => {
         alt="Kicks"
         width={1550}
         height={300}
-        className="pointer-events-none absolute bottom-0 left-4 h-auto w-full"
+        className="pointer-events-none absolute bottom-0 left-0 h-auto w-full px-4"
       />
     </div>
   );
