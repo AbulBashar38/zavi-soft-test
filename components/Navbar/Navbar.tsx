@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../../public/images/Logo.svg";
+import Logo from "../../public/images/Logo.svg";
 const menuItems = {
   men: ["Sneakers", "Running", "Lifestyle"],
   women: ["Training", "Running", "Casual"],

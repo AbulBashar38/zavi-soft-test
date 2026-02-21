@@ -1,5 +1,6 @@
 "use client";
-import PrimaryProductCard from "@/components/shared/product-cards/PrimaryProductCard";
+import PrimaryProductCard from "@/components/product-cards/PrimaryProductCard";
+import ProductCardShimmer from "@/components/product-cards/ProductCardShimmer";
 import { Button } from "@/components/ui/button";
 import { useGetProductsQuery } from "@/services/productsApi";
 
@@ -10,22 +11,20 @@ const NewProductSection = () => {
 
   return (
     <section className="mt-16 space-y-8 lg:mt-20">
-      <div className="flex items-center justify-between gap-4">
-        <h2 className="text-4xl font-extrabold uppercase leading-tight sm:text-5xl lg:text-6xl">
-          DON&apos;T MISS OUT
-          <br />
-          NEW DROPS
-        </h2>
+      <div className="flex items-end justify-between gap-4">
+        <div className="w-[40%]">
+          <h2 className="text-4xl font-bold uppercase leading-tight sm:text-5xl lg:text-6xl">
+            Don&apos;t miss out new drops
+          </h2>
+        </div>
 
-        <Button className="h-11 shrink-0 rounded-lg bg-primary px-6 text-sm font-semibold tracking-wide text-primary-foreground hover:bg-primary/90 lg:h-12 lg:px-8">
-          SHOP NEW DROPS
-        </Button>
+        <Button>SHOP NEW DROPS</Button>
       </div>
 
       {isLoading ? (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-96 animate-pulse rounded-3xl bg-muted" />
+            <ProductCardShimmer key={i} />
           ))}
         </div>
       ) : (

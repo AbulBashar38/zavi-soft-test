@@ -1,4 +1,4 @@
-import ReviewCard from "@/components/shared/product-cards/ReviewCard";
+import ReviewCard from "@/components/product-cards/ReviewCard";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/types/reviewType";
 

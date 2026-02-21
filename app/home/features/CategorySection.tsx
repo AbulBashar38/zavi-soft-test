@@ -1,5 +1,5 @@
 "use client";
-import CategoryCard from "@/components/shared/product-cards/CategoryCard";
+import CategoryCard from "@/components/product-cards/CategoryCard";
 import { Button } from "@/components/ui/button";
 import type { CarouselApi } from "@/components/ui/carousel";
 import {
