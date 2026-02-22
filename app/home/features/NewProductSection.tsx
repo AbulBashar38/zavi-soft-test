@@ -10,7 +10,7 @@ const NewProductSection = () => {
   const displayProducts = products?.slice(0, 4) ?? [];
 
   return (
-    <section className="w-full px-4 lg:px-8">
+    <section id="new-product" className="w-full px-4 lg:px-8">
       <div className="space-y-8 mx-auto container">
         <div className="flex items-end justify-between gap-4">
           <div className="lg:w-[40%] w-full">

@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import { clearCart } from "@/state-management/features/cartSlice";
+import { toast } from "sonner";
 
 type OrderHistorySummaryProps = {
   itemsCount: number;
@@ -15,6 +18,7 @@ const OrderHistorySummary = ({
   const delivery = itemsCount > 0 ? 6.99 : 0;
   const salesTax = 0;
   const total = subtotal + delivery + salesTax;
+  const dispatch = useAppDispatch();
 
   return (
     <Card className="rounded-3xl bg-card/80 py-4 sm:py-5 lg:sticky lg:top-24 lg:self-start">
@@ -48,6 +52,14 @@ const OrderHistorySummary = ({
         <Button
           variant="secondary"
           className="mt-2 h-12 w-full text-base font-semibold sm:h-14"
+          onClick={() => {
+            if (itemsCount <= 0) {
+              toast("Your cart is empty");
+              return;
+            }
+            dispatch(clearCart());
+            toast.success("Checkout successful — your order is placed");
+          }}
         >
           CHECKOUT
         </Button>

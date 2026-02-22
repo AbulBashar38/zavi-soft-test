@@ -40,7 +40,7 @@ const Navbar = () => {
               <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
                   <Link
-                    href="#"
+                    href="#new-product"
                     className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
                   >
                     New Drops 🔥
@@ -149,7 +149,7 @@ const Navbar = () => {
             </SheetContent>
           </Sheet>
 
-          <div className="lg:-ml-32">
+          <Link href={"/home"} className="lg:-ml-32">
             <Image
               src={Logo}
               alt="Kicks"
@@ -158,7 +158,7 @@ const Navbar = () => {
               priority
               className="sm:w-full w-24"
             />
-          </div>
+          </Link>
 
           <div className="flex items-center">
             <Button
