@@ -4,9 +4,9 @@ import ReviewCard from "@/components/product-cards/ReviewCard";
 import { Button } from "@/components/ui/button";
 import { useDeviceWidth } from "@/hooks/useDeviceWidth";
 import { mockReviews } from "@/lib/constant";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
-const cardContainerVariants = {
+const cardContainerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -15,7 +15,7 @@ const cardContainerVariants = {
   },
 };
 
-const cardItemVariants = {
+const cardItemVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };

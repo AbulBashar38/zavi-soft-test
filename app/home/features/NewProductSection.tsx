@@ -3,9 +3,9 @@ import PrimaryProductCard from "@/components/product-cards/PrimaryProductCard";
 import ProductCardShimmer from "@/components/product-cards/ProductCardShimmer";
 import { Button } from "@/components/ui/button";
 import { useGetProductsQuery } from "@/services/productsApi";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
-const cardContainerVariants = {
+const cardContainerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -14,7 +14,7 @@ const cardContainerVariants = {
   },
 };
 
-const cardItemVariants = {
+const cardItemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };

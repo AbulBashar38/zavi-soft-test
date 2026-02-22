@@ -1,16 +1,16 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { categories, company, socials } from "./footer-data";
 import FooterLinksColumn from "./FooterLinksColumn";
 
-const columnVariants = {
+const columnVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const colItemVariants = {
+const colItemVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
