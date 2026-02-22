@@ -18,6 +18,7 @@ import {
 import { useAppSelector } from "@/hooks/reduxHooks";
 import { menuItems } from "@/lib/constant";
 import { selectCartTotalQuantity } from "@/state-management/features/cartSlice";
+import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,9 +33,14 @@ const Navbar = () => {
   };
   const cartTotal = useAppSelector(selectCartTotalQuantity);
   return (
-    <section className="w-full px-4 py-8 sm:px-6 lg:px-8">
-      <nav className=" mx-auto container ">
-        <div className="flex items-center justify-between rounded-2xl bg-card px-6 py-5 sm:px-8">
+    <section className="w-full flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8 h-36">
+      <nav className=" container ">
+        <motion.div
+          className="flex items-center justify-between rounded-2xl bg-card px-6 py-5 sm:px-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <div className="hidden  items-center lg:flex ">
             <NavigationMenu viewport={false}>
               <NavigationMenuList className="gap-2">
@@ -182,7 +188,7 @@ const Navbar = () => {
               {cartTotal}
             </Link>
           </div>
-        </div>
+        </motion.div>
       </nav>
     </section>
   );

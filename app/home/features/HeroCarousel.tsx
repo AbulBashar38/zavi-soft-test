@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -50,19 +51,28 @@ const HeroCarousel = () => {
         </span>
       </div>
 
-      <div className="absolute bottom-6 left-3 max-w-75 md:max-w-96 space-y-2 text-white lg:bottom-10 lg:left-10 lg:max-w-md lg:space-y-3">
-        <h2 className="text-2xl leading-none font-extrabold md:text-5xl xl:text-6xl">
-          NIKE AIR MAX
-        </h2>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeImageId}
+          className="absolute bottom-6 left-3 max-w-75 md:max-w-96 space-y-2 text-white lg:bottom-10 lg:left-10 lg:max-w-md lg:space-y-3"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
+          <h2 className="text-2xl leading-none font-extrabold md:text-5xl xl:text-6xl">
+            NIKE AIR MAX
+          </h2>
 
-        <div className="w-[70%] md:w-full">
-          <p className="text-base text-accent lg:text-2xl xl:leading-8">
-            Nike introducing the new air max for everyone&apos;s comfort
-          </p>
-        </div>
+          <div className="w-[70%] md:w-full">
+            <p className="text-base text-accent lg:text-2xl xl:leading-8">
+              Nike introducing the new air max for everyone&apos;s comfort
+            </p>
+          </div>
 
-        <Button>SHOP NOW</Button>
-      </div>
+          <Button>SHOP NOW</Button>
+        </motion.div>
+      </AnimatePresence>
 
       <div className="absolute right-3 bottom-6 flex flex-col gap-2 sm:right-5 sm:bottom-10 sm:gap-3">
         {previewImages.map((item) => {

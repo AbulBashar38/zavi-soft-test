@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { chunkArray } from "@/lib/utils";
 import { useGetCategoriesQuery } from "@/services/productsApi";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -29,7 +30,13 @@ const CategorySection = () => {
   return (
     <section className=" bg-secondary w-screen pl-4 sm:px-8">
       <div className="container mx-auto pt-10 sm:pt-[3em]">
-        <div className="mb-8 flex items-end justify-between">
+        <motion.div
+          className="mb-8 flex items-end justify-between"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <h2 className="text-2xl font-semibold uppercase leading-tight sm:text-5xl lg:text-6xl text-white">
             categories
           </h2>
@@ -50,7 +57,7 @@ const CategorySection = () => {
               <ChevronRight className="h-5 w-5 lg:h-6 lg:w-6" />
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {isLoading ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -59,7 +66,13 @@ const CategorySection = () => {
             ))}
           </div>
         ) : (
-          <div className="sm:pl-20">
+          <motion.div
+            className="sm:pl-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+          >
             <Carousel
               setApi={setApi}
               opts={{
@@ -91,7 +104,7 @@ const CategorySection = () => {
                 ))}
               </CarouselContent>
             </Carousel>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>
