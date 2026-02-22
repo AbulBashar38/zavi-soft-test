@@ -43,6 +43,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "image2.com",
       },
+      {
+        protocol: "https",
+        hostname: "api.escuelajs.co",
+      },
     ],
   },
 };
