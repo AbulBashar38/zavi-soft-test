@@ -11,8 +11,8 @@ import {
 import { useAppDispatch } from "@/hooks/reduxHooks";
 import {
   removeFromCart,
-  type CartItem,
   updateQuantity,
+  type CartItem,
 } from "@/state-management/features/cartSlice";
 import { Heart, Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -29,43 +29,44 @@ const CartItemCard = ({ item }: CartItemCardProps) => {
   const formattedPrice = `$${item.totalPrice.toFixed(2)}`;
 
   return (
-    <article className="grid grid-cols-[112px_1fr] gap-4 rounded-2xl bg-card p-4 sm:grid-cols-[140px_1fr] sm:gap-6 sm:p-5">
-      <div className="relative overflow-hidden rounded-2xl bg-muted/70">
-        <div className="relative aspect-square w-full">
-          <Image
-            src={productImage}
-            alt={item.product.title}
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 640px) 112px, 140px"
-          />
-        </div>
+    <div className="grid grid-cols-2 gap-4 rounded-2xl bg-card md:p-4 sm:grid-cols-[140px_1fr] sm:gap-6 lg:p-5">
+      <div className=" overflow-hidden rounded-2xl bg-muted/70">
+        <Image
+          src={productImage}
+          alt={item.product.title}
+          width={500}
+          height={500}
+          className="object-cover object-center w-full h-full"
+          // sizes="(max-width: 640px) 112px, 140px"
+        />
       </div>
 
       <div className="flex min-h-full flex-col">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-2xl font-semibold uppercase leading-tight sm:text-3xl">
+            <h3 className=" font-semibold uppercase leading-tight text-base md:text-xl">
               {item.product.title}
             </h3>
-            <p className="mt-1 text-sm text-muted-foreground sm:text-xl">
+            <p className="mt-1  text-muted-foreground sm:text-base font-semibold">
               Men&apos;s Road Running Shoes
             </p>
-            <p className="text-sm text-muted-foreground sm:text-xl">
+            <p className=" text-muted-foreground sm:text-base font-semibold">
               {item.color || "Enamel Blue"} / University White
             </p>
           </div>
 
-          <p className="hidden text-3xl font-bold text-primary sm:block">{formattedPrice}</p>
+          <p className="hidden sm:text-xl font-bold text-primary sm:block">
+            {formattedPrice}
+          </p>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
-          <div className="inline-flex items-center gap-2 text-sm sm:text-xl">
+        <div className=" flex flex-wrap items-center gap-1 sm:gap-4">
+          <div className="inline-flex items-center gap-2 ">
             <span>Size</span>
             <span className="font-medium">{item.size ?? 10}</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 text-sm sm:text-xl">
+          <div className="inline-flex items-center gap-2 ">
             <span>Quantity</span>
             <Select
               value={String(item.quantity)}
@@ -92,9 +93,11 @@ const CartItemCard = ({ item }: CartItemCardProps) => {
           </div>
         </div>
 
-        <p className="mt-3 text-4xl font-bold text-primary sm:hidden">{formattedPrice}</p>
+        <p className=" text-xl font-bold text-primary sm:hidden">
+          {formattedPrice}
+        </p>
 
-        <div className="mt-3 flex items-center gap-2">
+        <div className=" flex items-center gap-2">
           <Button variant="ghost" size="icon" className="h-9! w-9!">
             <Heart className="size-5" />
           </Button>
@@ -108,7 +111,7 @@ const CartItemCard = ({ item }: CartItemCardProps) => {
           </Button>
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 

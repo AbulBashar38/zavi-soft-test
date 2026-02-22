@@ -72,7 +72,7 @@ const SuggestionProducts = ({ products }: SuggestionProductsProps) => {
           <Button
             variant="secondary"
             size="icon"
-            className="h-10! w-10! rounded-2xl bg-foreground/35 text-white hover:bg-foreground/50"
+            className="h-10! w-10! rounded-xl "
             onClick={() => api?.scrollPrev()}
           >
             <ChevronLeftIcon />
@@ -80,7 +80,7 @@ const SuggestionProducts = ({ products }: SuggestionProductsProps) => {
           <Button
             variant="secondary"
             size="icon"
-            className="h-10! w-10! rounded-2xl bg-secondary text-secondary-foreground hover:bg-secondary/90"
+            className="h-10! w-10! rounded-xl "
             onClick={() => api?.scrollNext()}
           >
             <ChevronRightIcon />

@@ -5,7 +5,9 @@ import { useAppDispatch } from "@/hooks/reduxHooks";
 import { addToCart } from "@/state-management/features/cartSlice";
 import type { Product } from "@/types/productsType";
 import { Heart } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import ProductColorContainer from "./ProductColorContainer";
 import ProductDescription from "./ProductDescription";
 import ProductSizeContainer from "./ProductSizeContainer";
@@ -23,6 +25,35 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   const [selectedColor, setSelectedColor] = useState(colorOptions[0].name);
   const [selectedSize, setSelectedSize] = useState(38);
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: selectedColor,
+        size: selectedSize,
+      }),
+    );
+
+    toast.success(`${product.title} added to cart`);
+    router.push("/cart-page");
+  };
+
+  const handleBuyNow = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: selectedColor,
+        size: selectedSize,
+      }),
+    );
+
+    toast.success(`${product.title} added to cart`);
+    router.push("/cart-page");
+  };
 
   return (
     <aside className="space-y-6 rounded-3xl bg-transparent p-0 xl:sticky xl:top-24">
@@ -52,25 +83,22 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <Button
           variant="secondary"
           className="flex-1"
-          onClick={() =>
-            dispatch(
-              addToCart({
-                product,
-                quantity: 1,
-                color: selectedColor,
-                size: selectedSize,
-              }),
-            )
-          }
+          onClick={handleAddToCart}
         >
           ADD TO CART
         </Button>
-        <Button variant="secondary" size="icon" className="h-12! w-12!">
+        <Button
+          variant="secondary"
+          size="icon"
+          className="lg:h-12! lg:w-12! h-10!"
+        >
           <Heart />
         </Button>
       </div>
 
-      <Button className="w-full">BUY IT NOW</Button>
+      <Button className="w-full" onClick={handleBuyNow}>
+        BUY IT NOW
+      </Button>
 
       <ProductDescription product={product} selectedColor={selectedColor} />
     </aside>

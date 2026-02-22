@@ -20,22 +20,25 @@ const CartContainer = () => {
     data?.filter((product) => !cartItemIds.has(product.id)).slice(0, 8) ?? [];
 
   return (
-    <main className="container mx-auto space-y-8 px-4 pb-10 sm:space-y-10 sm:px-6 sm:pb-16 lg:px-8">
-      <section className="space-y-2">
-        <h1 className="text-5xl font-semibold leading-tight">Saving to celebrate</h1>
-        <p className="max-w-4xl text-sm text-muted-foreground sm:text-xl">
+    <section className="container mx-auto space-y-8 px-4 pb-10 sm:space-y-10 sm:px-6 sm:pb-16 lg:px-8">
+      <section className="space-y-2.5">
+        <h1 className="text-2xl font-semibold leading-tight sm:text-5xl">
+          Saving to celebrate
+        </h1>
+        <p className="max-w-4xl text-base text-muted-foreground sm:text-lg">
           Enjoy up to 60% off thousands of styles during the End of Year sale -
           while supplies last. No code needed.
         </p>
         <button
           type="button"
-          className="text-xl text-foreground underline underline-offset-2"
+          className="text-lg text-foreground  underline-offset-2"
         >
-          Join us. or Sign-in
+          <span className="underline">Join us.</span> or{" "}
+          <span className="underline">Sign-in</span>
         </button>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-[1.75fr_1fr] lg:gap-6">
+      <section className="grid items-start gap-4 lg:grid-cols-[1.75fr_1fr] lg:gap-6">
         <CartItemsSection items={cartItems} />
         <OrderHistorySummary
           itemsCount={cartItems.length}
@@ -44,7 +47,7 @@ const CartContainer = () => {
       </section>
 
       <SuggestionProducts products={suggestionProducts} />
-    </main>
+    </section>
   );
 };
 

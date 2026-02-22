@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 import StoreProvider from "@/provider/StoreProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Rubik } from "next/font/google";
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Toaster position="top-center" />
         </StoreProvider>
       </body>
     </html>
