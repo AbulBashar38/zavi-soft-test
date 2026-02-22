@@ -7,6 +7,13 @@ type ProductImagesProps = {
 
 const fallbackImage = "/images/hero-feature1.jpg";
 
+const cornerRadius = [
+  "rounded-tl-[3em]",
+  "rounded-tr-[3em]",
+  "rounded-bl-[3em]",
+  "rounded-br-[3em]",
+];
+
 const ProductImages = ({ title, images }: ProductImagesProps) => {
   const safeImages = images.length > 0 ? images : [fallbackImage];
   const galleryImages =
@@ -22,7 +29,7 @@ const ProductImages = ({ title, images }: ProductImagesProps) => {
       {galleryImages.map((image, index) => (
         <div
           key={`${image}-${index}`}
-          className="relative overflow-hidden rounded-3xl border border-transparent bg-white/65"
+          className={`relative overflow-hidden border border-transparent bg-white/65 ${cornerRadius[index]}`}
         >
           <div className="relative aspect-4/5 w-full">
             <Image

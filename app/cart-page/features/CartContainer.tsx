@@ -7,6 +7,7 @@ import {
   selectCartItems,
   selectCartTotalAmount,
 } from "@/state-management/features/cartSlice";
+import { motion } from "framer-motion";
 import CartItemsSection from "./CartItemsSection";
 import OrderHistorySummary from "./OrderHistorySummary";
 
@@ -21,7 +22,12 @@ const CartContainer = () => {
 
   return (
     <section className="container mx-auto space-y-8 px-4 pb-10 sm:space-y-10 sm:px-6 sm:pb-16 lg:px-8">
-      <section className="space-y-2.5">
+      <motion.section
+        className="space-y-2.5"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <h1 className="text-2xl font-semibold leading-tight sm:text-5xl">
           Saving to celebrate
         </h1>
@@ -36,15 +42,20 @@ const CartContainer = () => {
           <span className="underline">Join us.</span> or{" "}
           <span className="underline">Sign-in</span>
         </button>
-      </section>
+      </motion.section>
 
-      <section className="grid items-start gap-4 lg:grid-cols-[1.75fr_1fr] lg:gap-6">
+      <motion.section
+        className="grid items-start gap-4 lg:grid-cols-[1.75fr_1fr] lg:gap-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+      >
         <CartItemsSection items={cartItems} />
         <OrderHistorySummary
           itemsCount={cartItems.length}
           subtotal={cartTotalAmount}
         />
-      </section>
+      </motion.section>
 
       <SuggestionProducts products={suggestionProducts} />
     </section>

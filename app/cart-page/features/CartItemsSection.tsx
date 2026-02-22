@@ -1,5 +1,7 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CartItem } from "@/state-management/features/cartSlice";
+import { AnimatePresence, motion } from "framer-motion";
 import CartItemCard from "./CartItemCard";
 
 type CartItemsSectionProps = {
@@ -20,16 +22,29 @@ const CartItemsSection = ({ items }: CartItemsSectionProps) => {
 
       <CardContent className="space-y-4 px-4 sm:px-6">
         {items.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border bg-background/30 p-6 text-base text-muted-foreground sm:text-lg">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="rounded-2xl border border-dashed border-border bg-background/30 p-6 text-base text-muted-foreground sm:text-lg"
+          >
             Your bag is empty.
-          </div>
+          </motion.div>
         ) : (
-          items.map((item) => (
-            <CartItemCard
-              key={`${item.product.id}-${item.color ?? "na"}-${item.size ?? "na"}`}
-              item={item}
-            />
-          ))
+          <AnimatePresence initial={false}>
+            {items.map((item) => (
+              <motion.div
+                key={`${item.product.id}-${item.color ?? "na"}-${item.size ?? "na"}`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 40, height: 0, marginBottom: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="overflow-hidden"
+              >
+                <CartItemCard item={item} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         )}
       </CardContent>
     </Card>

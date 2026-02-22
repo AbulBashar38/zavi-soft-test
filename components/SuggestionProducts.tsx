@@ -11,6 +11,7 @@ import {
 import { useDeviceWidth } from "@/hooks/useDeviceWidth";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types/productsType";
+import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
@@ -63,7 +64,13 @@ const SuggestionProducts = ({ products }: SuggestionProductsProps) => {
 
   return (
     <section className="space-y-6 pb-10 sm:pb-16">
-      <div className="flex items-center justify-between gap-4">
+      <motion.div
+        className="flex items-center justify-between gap-4"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <h2 className="text-2xl font-semibold leading-tight sm:text-4xl">
           You may also like
         </h2>
@@ -86,33 +93,56 @@ const SuggestionProducts = ({ products }: SuggestionProductsProps) => {
             <ChevronRightIcon />
           </Button>
         </div>
-      </div>
+      </motion.div>
 
       <Carousel setApi={setApi} opts={{ align: "start" }}>
-        <CarouselContent className={isMediumDevice ? "-ml-0" : undefined}>
+        <CarouselContent className={isMediumDevice ? "ml-0" : undefined}>
           {isMediumDevice
             ? displaySlides.map((slideProducts, slideIndex) => (
                 <CarouselItem key={slideIndex} className="basis-full pl-0">
                   <div className="grid grid-cols-2 gap-4">
-                    {slideProducts.map((product) => (
-                      <PrimaryProductCard
+                    {slideProducts.map((product, i) => (
+                      <motion.div
                         key={product.id}
-                        product={product}
-                        className="h-full [&_h3]:text-2xl"
-                      />
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{
+                          duration: 0.4,
+                          ease: "easeOut",
+                          delay: i * 0.08,
+                        }}
+                      >
+                        <PrimaryProductCard
+                          product={product}
+                          className="h-full [&_h3]:text-2xl"
+                        />
+                      </motion.div>
                     ))}
                   </div>
                 </CarouselItem>
               ))
-            : products.map((product) => (
+            : products.map((product, i) => (
                 <CarouselItem
                   key={product.id}
                   className="basis-full sm:basis-1/2 lg:basis-1/4"
                 >
-                  <PrimaryProductCard
-                    product={product}
-                    className="h-full [&_h3]:text-3xl sm:[&_h3]:text-xl"
-                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                      duration: 0.4,
+                      ease: "easeOut",
+                      delay: i * 0.07,
+                    }}
+                    className="h-full"
+                  >
+                    <PrimaryProductCard
+                      product={product}
+                      className="h-full [&_h3]:text-3xl sm:[&_h3]:text-xl"
+                    />
+                  </motion.div>
                 </CarouselItem>
               ))}
         </CarouselContent>

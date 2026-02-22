@@ -56,7 +56,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   };
 
   return (
-    <aside className="space-y-6 rounded-3xl bg-transparent p-0 xl:sticky xl:top-24">
+    <aside className="space-y-6 rounded-3xl bg-transparent p-0">
       <div className="space-y-4">
         <span className="inline-flex rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">
           New Release
