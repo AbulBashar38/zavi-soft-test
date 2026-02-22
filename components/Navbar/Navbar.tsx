@@ -40,7 +40,7 @@ const Navbar = () => {
               <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
                   <Link
-                    href="#new-product"
+                    href="/home#new-product"
                     className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
                   >
                     New Drops 🔥
