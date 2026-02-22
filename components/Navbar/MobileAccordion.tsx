@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { SheetClose } from "../ui/sheet";
@@ -20,26 +21,42 @@ const MobileAccordion = ({
       onClick={onToggle}
     >
       {label}
-      <ChevronDown
-        className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
-      />
+      <motion.span
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="inline-flex"
+      >
+        <ChevronDown className="size-4" />
+      </motion.span>
     </button>
-    {isOpen && (
-      <ul className="ml-4 mt-1 flex flex-col gap-1 border-l border-border pl-3">
-        {items.map((item) => (
-          <li key={item}>
-            <SheetClose asChild>
-              <Link
-                href="#"
-                className="block rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-muted"
-              >
-                {item}
-              </Link>
-            </SheetClose>
-          </li>
-        ))}
-      </ul>
-    )}
+
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.ul
+          key="accordion-content"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="ml-4 overflow-hidden border-l border-border pl-3"
+        >
+          <div className="mt-1 flex flex-col gap-1">
+            {items.map((item) => (
+              <li key={item}>
+                <SheetClose asChild>
+                  <Link
+                    href="#"
+                    className="block rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-muted"
+                  >
+                    {item}
+                  </Link>
+                </SheetClose>
+              </li>
+            ))}
+          </div>
+        </motion.ul>
+      )}
+    </AnimatePresence>
   </li>
 );
 export default MobileAccordion;
